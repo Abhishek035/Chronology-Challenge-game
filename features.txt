@@ -1,0 +1,7 @@
+--> Add a "reveal answer" button. 
+--> Add a "check order" button for each event. If the event is in the correct place, it will be green, else it will be red. 
+--> Randomise the puzzles order. 
+--> Implement toast for correct and wrong answers. 
+
+Bugs:
+--> Event cards can be dragged endlessly to the right side. 

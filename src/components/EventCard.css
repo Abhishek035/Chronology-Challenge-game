@@ -1,0 +1,13 @@
+.event-card {
+  background-color: #f5e8c7;
+  border: 2px solid #d8c0a0;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 8px;
+  cursor: grab;
+  font-family: 'Georgia', serif;
+  font-size: 1.1em;
+  color: #3a2e1b;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-align: center;
+}

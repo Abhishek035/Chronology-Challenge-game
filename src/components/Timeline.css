@@ -1,0 +1,9 @@
+.timeline {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.sortable-item {
+  margin-bottom: 10px;
+}
