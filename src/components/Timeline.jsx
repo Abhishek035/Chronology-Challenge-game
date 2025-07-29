@@ -9,7 +9,7 @@ import EventCard from "./EventCard";
 import "./Timeline.css";
 
 // This component is the main sortable container.
-export function SortableItem({ id, event }) {
+export function SortableItem({ id, event, isRevealed, correctOrder }) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({
       id,
@@ -28,12 +28,12 @@ export function SortableItem({ id, event }) {
       {...listeners}
       className="sortable-item"
     >
-      <EventCard event={event} />
+      <EventCard event={event} isRevealed={isRevealed} correctPosition={correctOrder[event.id]} />
     </div>
   );
 }
 
-export default function Timeline({ items }) {
+export default function Timeline({ items, isRevealed, correctOrder }) {
   return (
     <div className="timeline">
       <SortableContext
@@ -41,7 +41,7 @@ export default function Timeline({ items }) {
         strategy={verticalListSortingStrategy}
       >
         {items.map((event) => (
-          <SortableItem key={event.id} id={event.id} event={event} />
+          <SortableItem key={event.id} id={event.id} event={event} isRevealed={isRevealed} correctOrder={correctOrder} /> 
         ))}
       </SortableContext>
     </div>

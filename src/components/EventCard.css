@@ -5,9 +5,25 @@
   padding: 16px;
   margin-bottom: 8px;
   cursor: grab;
-  font-family: 'Georgia', serif;
+  font-family: "Georgia", serif;
   font-size: 1.1em;
   color: #3a2e1b;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.event-position {
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #c53b3b; /* A distinct color to draw attention */
+}
+
+/* Allows the description to take up the remaining space */
+.event-description {
+  flex-grow: 1;
+  text-align: left;
 }

@@ -22,13 +22,24 @@ export const shuffleArray = (array) => {
 
 export default function App() {
   const [currentPuzzleIndex, setCurrentPuzzleIndex] = useState(0);
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState([]); // Array of historical events
   const [message, setMessage] = useState("");
+  const [isRevealed, setIsRevealed] = useState(false);
+  const [correctOrder, setCorrectOrder] = useState({});
 
   useEffect(() => {
     const currentPuzzle = eventSets[currentPuzzleIndex];
     setEvents(shuffleArray([...currentPuzzle.events]));
+
+    const sortedOrder = currentPuzzle.events.sort((a, b) => a.year - b.year);
+    const orderMap = {};
+    sortedOrder.forEach((event, index) => {
+      orderMap[event.id] = index + 1;
+    });
+
+    setCorrectOrder(orderMap);
     setMessage("");
+    setIsRevealed(false);
   }, [currentPuzzleIndex]);
 
   const handleDragEnd = (event) => {
@@ -49,6 +60,7 @@ export default function App() {
 
     if (userOrderIds === correctOrderIds) {
       setMessage("Congratulations! You got it right!");
+
     } else {
       setMessage("Not quite right. Try again!");
     }
@@ -58,6 +70,11 @@ export default function App() {
     setCurrentPuzzleIndex((prevIndex) => (prevIndex + 1) % eventSets.length);
   };
 
+  const revealAnswer = () => {
+    setIsRevealed(true);
+    setMessage("The correct order is revealed. Now try arranging them!");
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -65,10 +82,11 @@ export default function App() {
         <p>Arrange the historical events in the correct chronological order.</p>
       </header>
       <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-        <Timeline items={events} />
+        <Timeline items={events} isRevealed={isRevealed} correctOrder={correctOrder} />
       </DndContext>
       <div className="controls">
         <button onClick={checkOrder}>Check Answer</button>
+        <button onClick={revealAnswer} disabled={isRevealed || message.includes("Congratulations")}>Reveal Answer</button>
         {message && <p className="message">{message}</p>}
         {message.includes("Congratulations") && (
           <button onClick={nextPuzzle}>Next Puzzle</button>
