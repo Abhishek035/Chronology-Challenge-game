@@ -1,19 +1,21 @@
 .event-card {
-  background-color: #f5e8c7;
-  border: 2px solid #d8c0a0;
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 8px;
-  cursor: grab;
-  font-family: "Georgia", serif;
-  font-size: 1.1em;
-  color: #3a2e1b;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-align: center;
-
   display: flex;
   align-items: center;
-  gap: 15px;
+  justify-content: space-between;
+  background-color: white;
+  color: #333;
+  padding: 15px;
+  /* margin: 10px 0; */ /* The margin is now on sortable-item */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* cursor: grab; */ /* The cursor is now on the handle */
+  transition: background-color 0.3s ease;
+  flex-grow: 1; /* This makes the card fill the available space */
+}
+
+.event-content {
+  display: flex;
+  align-items: center;
 }
 
 .event-position {
@@ -26,4 +28,38 @@
 .event-description {
   flex-grow: 1;
   text-align: left;
+}
+
+.check-button {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.check-button:hover {
+  background-color: #e0e0e0;
+}
+
+.event-card.correct {
+  background-color: #d4edda; /* Light green */
+}
+
+.event-card.incorrect {
+  background-color: #e23a48; /* Light red */
+}
+
+.drag-handle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px; /* Makes it easier to grab */
+  cursor: grab;
+  color: #46af29;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
 }

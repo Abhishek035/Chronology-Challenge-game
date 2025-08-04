@@ -1,13 +1,14 @@
 Features: 
---> Randomise the puzzles order. 
---> Add a "check order" button for each event. If the event is in the correct place, it will be green, else it will be red. 
 --> Implement toast for correct and wrong answers. 
+--> Improve the css. 
 
 Bugs:
+--> Event cards can be dragged endlessly to the right side. 
 
 Features Done:
 --> Add a "reveal answer" button. 
+--> Add a "check order" button for each event. If the event is in the correct place, it will be green, else it will be red. 
+--> Randomise the puzzles order. 
 
 Bugs Done: 
---> Event cards can be dragged endlessly to the right side. 
-
+--> App.jsx:81 Cannot update a component (App) while rendering a different component (SortableItem). To locate the bad setState() call inside SortableItem

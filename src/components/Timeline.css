@@ -5,5 +5,21 @@
 }
 
 .sortable-item {
-  margin-bottom: 10px;
+  display: flex; /* This is the key change */
+  align-items: center; /* Vertically aligns the handle and card */
+  margin: 10px 0;
+  z-index: 1; /* Helps with rendering during drag */
+}
+
+/* You can also style the handle directly here */
+.drag-handle {
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  cursor: grab;
+  color: #aaa;
+  align-self: stretch; /* Makes the handle as tall as the card */
+  background-color: #f9f9f9;
+  border-right: 1px solid #eee;
+  border-radius: 8px;
 }
